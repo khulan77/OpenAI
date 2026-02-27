@@ -26,7 +26,7 @@ export const FoodGeneration = () => {
     setExtractedInfo([]);
 
     try {
-      const extractRes = await fetch("/api/caption", {
+      const extractRes = await fetch("/api/extract", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
@@ -95,17 +95,7 @@ export const FoodGeneration = () => {
               {extractedInfo && (
                 <div className="p-4 border flex flex-wrap items-center gap-2 card rounded-lg shadow-sm bg-white">
                   <h2 className="mb-3 text-lg font-semibold">Extracted Info</h2>
-                  <div className="flex flex-wrap gap-2">
-                    {extractedInfo.map((item, index) => (
-                      <Badge
-                        key={index}
-                        variant="secondary"
-                        className="px-3 py-1 text-sm font-medium"
-                      >
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
+                  <div className="flex flex-wrap gap-2">{extractedInfo}</div>
                 </div>
               )}
               {resultImage && (
